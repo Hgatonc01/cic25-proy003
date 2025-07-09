@@ -13,16 +13,11 @@ public class CalculadoraTest {
 
         // Ejecuto
         cut.sumar(5.6);
+        cut.sumar(3.4);
 
         // Verifico
         double valorActual = cut.getTotal();
-        assertEquals(5.6, valorActual, 0.000001);
-
-
-        cut.sumar(3.4);
-        valorActual = cut.getTotal();
-
-        assertEquals(9, valorActual, 0.000001);
+        assertEquals(9, valorActual, 0.000001, "La suma ha fallado");
     }
 
     @Test
@@ -33,16 +28,11 @@ public class CalculadoraTest {
 
         // Ejecuto
         cut.restar(3.4);
+        cut.restar(-3);
 
         // Verifico
         double valorActual = cut.getTotal();
-        assertEquals(-3.4, valorActual, 0.000001);
-
-
-        cut.restar(3);
-        valorActual = cut.getTotal();
-
-        assertEquals(-6.4, valorActual, 0.000001);
+        assertEquals(-0.4, valorActual, 0.000001, "La resta ha fallado");
     }
 
     @Test
@@ -58,7 +48,7 @@ public class CalculadoraTest {
 
         // Verifico
         double valorActual = cut.getTotal();
-        assertEquals(10.2, valorActual, 0.000001);
+        assertEquals(10.2, valorActual, 0.000001, "La multiplicación ha fallado");
 
     }
 }

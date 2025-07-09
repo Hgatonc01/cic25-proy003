@@ -1,7 +1,7 @@
 package es.cic.curso25;
 
 public class Calculadora extends Object {
-    private double total;
+    private double total = 0.0d;
 
     public double getTotal() {
         return total;
@@ -12,7 +12,7 @@ public class Calculadora extends Object {
     }
 
     public void restar(double valor) {
-        total = total - valor;
+        total -= valor;
     }
 
     public void multiplicar(double valor) {
