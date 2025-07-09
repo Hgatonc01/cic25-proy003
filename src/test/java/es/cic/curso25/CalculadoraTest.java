@@ -44,4 +44,21 @@ public class CalculadoraTest {
 
         assertEquals(-6.4, valorActual, 0.000001);
     }
+
+    @Test
+    public void testMultiplicar() {
+        // Preparo
+        Calculadora cut = new Calculadora();
+
+
+        // Ejecuto
+        cut.sumar(1);
+        cut.multiplicar(3.4);
+        cut.multiplicar(3);
+
+        // Verifico
+        double valorActual = cut.getTotal();
+        assertEquals(10.2, valorActual, 0.000001);
+
+    }
 }
