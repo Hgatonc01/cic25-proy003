@@ -8,7 +8,7 @@ public class Calculadora extends Object {
     }
 
     public void sumar(double valor) {
-        total = total + valor;
+        total += valor;
     }
 
     public void restar(double valor) {
@@ -16,6 +16,15 @@ public class Calculadora extends Object {
     }
 
     public void multiplicar(double valor) {
-        total = total * valor;
+        total *= valor;
+    }
+
+    public void dividir(double valor) {
+
+        if (valor == 0) {
+            throw new ArithmeticException("División por cero");
+        } else {
+            total /= valor;
+        }
     }
 }

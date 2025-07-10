@@ -1,7 +1,9 @@
 package es.cic.curso25;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class CalculadoraTest {
@@ -39,16 +41,43 @@ public class CalculadoraTest {
     public void testMultiplicar() {
         // Preparo
         Calculadora cut = new Calculadora();
-
+        cut.sumar(1);
 
         // Ejecuto
-        cut.sumar(1);
         cut.multiplicar(3.4);
         cut.multiplicar(3);
 
         // Verifico
         double valorActual = cut.getTotal();
         assertEquals(10.2, valorActual, 0.000001, "La multiplicación ha fallado");
+
+    }
+
+    @Test
+    public void testDividir() {
+        // Preparo
+        Calculadora cut = new Calculadora();
+        cut.sumar(6);
+
+        // Ejecuto
+        cut.dividir(3);
+        cut.dividir(1.1);
+
+        // Verifico
+        double valorActual = cut.getTotal();
+        assertEquals(1.818181, valorActual, 0.000001, "La división ha fallado");
+
+    }
+
+    //@Disabled <- Desabilitar un test, Run with Coverage
+    @Test
+    public void testDividirPorCero() {
+        // Preparo
+        Calculadora cut = new Calculadora();
+        cut.sumar(4.2);
+
+        // Ejecuto
+        assertThrows(ArithmeticException.class, () -> cut.dividir(0));
 
     }
 }
