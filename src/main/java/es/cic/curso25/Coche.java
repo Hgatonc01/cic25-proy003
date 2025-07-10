@@ -1,31 +1,49 @@
 package es.cic.curso25;
 
 public class Coche {
-    private int velocidad;
-    private double consumo;
+
     public final double CONSUMO_INSTANTANEO = 4.3;
 
+    private Calculadora calculadora;
+
+    public Coche(){
+        this.calculadora = new Calculadora();
+    }
+
+    private int velocidad;
+    
     public int getVelocidad() {
         // throw new UnsupportedOperationException("No implementado aun"); <- Metodos definidos pero no implementados
         return velocidad;
     }
 
-    public double getConsumo() {
-        consumo = ((double)velocidad) / 100 * CONSUMO_INSTANTANEO;
+    public double getConsumo() {  
+        calculadora.limpiar();
+        calculadora.sumar(velocidad);
+        calculadora.dividir(100);
+        calculadora.multiplicar(CONSUMO_INSTANTANEO);
 
-        return consumo;
+        return calculadora.getTotal();
     }
 
     // TODO: Tratar caso velociad a partir de cierto punto
     public int acelerar(int incrementoDeVelocidad) {
-        this.velocidad += incrementoDeVelocidad;
+        calculadora.limpiar();
+        calculadora.sumar(velocidad);
+        calculadora.sumar(incrementoDeVelocidad);
+
+        this.velocidad = (int) Math.round(calculadora.getTotal());
 
         return velocidad;
     }
 
     // TODO: Tratar caso velocidad negativa
     public int frenar(int decrementoDeVelocidad) {
-        this.velocidad -= decrementoDeVelocidad;
+        calculadora.limpiar();
+        calculadora.sumar(velocidad);
+        calculadora.restar(decrementoDeVelocidad);
+
+        this.velocidad = (int) Math.round(calculadora.getTotal());
 
         return velocidad;
     }
