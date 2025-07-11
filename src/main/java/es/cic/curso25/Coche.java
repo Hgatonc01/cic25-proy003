@@ -34,6 +34,7 @@ public class Coche {
         this.velocidad = (int) Math.round(calculadora.getTotal());
 
         if(velocidad > 300) {
+            // Se podria hacer con: return velocidad = 300;
             int diferencia = velocidad - 300;
             velocidad -= diferencia;
             return velocidad;
@@ -50,8 +51,8 @@ public class Coche {
         this.velocidad = (int) Math.round(calculadora.getTotal());
 
         if(velocidad < 0) {
+            // Se podria hacer con: return velocidad = 0;
             velocidad -= velocidad;
-
             return velocidad;
         }else {
             return velocidad;
