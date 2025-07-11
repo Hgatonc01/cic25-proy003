@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CocheTest {
+public class CocheIntegrationTest {
 
     private Coche cut;
 
@@ -46,5 +46,21 @@ public class CocheTest {
         int velocidadFinal = cut.getVelocidad();
 
         assertEquals(50, velocidadFinal);
+    }
+
+    @Test
+    void testAcelerarMas300() {
+        cut.acelerar(299);
+        int velocidadFinal = cut.acelerar(23);
+
+        assertEquals(300, velocidadFinal);
+    }
+
+    @Test
+    void testFrenarMenos0() {
+        cut.acelerar(50);
+        int velocidadFinal = cut.frenar(60);
+
+        assertEquals(0, velocidadFinal);
     }
 }

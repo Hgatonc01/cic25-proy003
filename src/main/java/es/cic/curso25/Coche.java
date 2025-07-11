@@ -26,7 +26,6 @@ public class Coche {
         return calculadora.getTotal();
     }
 
-    // TODO: Tratar caso velociad a partir de cierto punto
     public int acelerar(int incrementoDeVelocidad) {
         calculadora.limpiar();
         calculadora.sumar(velocidad);
@@ -34,10 +33,15 @@ public class Coche {
 
         this.velocidad = (int) Math.round(calculadora.getTotal());
 
-        return velocidad;
+        if(velocidad > 300) {
+            int diferencia = velocidad - 300;
+            velocidad -= diferencia;
+            return velocidad;
+        }else {
+            return velocidad;
+        }
     }
 
-    // TODO: Tratar caso velocidad negativa
     public int frenar(int decrementoDeVelocidad) {
         calculadora.limpiar();
         calculadora.sumar(velocidad);
@@ -45,7 +49,14 @@ public class Coche {
 
         this.velocidad = (int) Math.round(calculadora.getTotal());
 
-        return velocidad;
+        if(velocidad < 0) {
+            velocidad -= velocidad;
+
+            return velocidad;
+        }else {
+            return velocidad;
+        }
+
     }
 
 }
